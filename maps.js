@@ -106,30 +106,31 @@ function getCourseFromPage() {
     return getCourceFromPage2(0, count);
 }
 
-function getCourceFromPage2(start, count)
-var places = new Array();
-var route = new Array();
-for (var i = start; i < count; i++) {
-    var pri = 'p' + i + '-';
-    var latlngtext = getVal(pri + 'latlng');
-    var title = getVal(pri + 'title');
-    var desc = getVal(pri + 'description');
-    var label = getVal(pri + 'label');
-    var skip = getVal(pri + 'skip');
-    var marker = getVal(pri + 'marker');
-    var p = new Place(getLatLngFromString(latlngtext), title, desc, label);
-    if (marker == undefined) {
-        places.push(p);
+function getCourceFromPage2(start, count) {
+
+    var places = new Array();
+    var route = new Array();
+    for (var i = start; i < count; i++) {
+        var pri = 'p' + i + '-';
+        var latlngtext = getVal(pri + 'latlng');
+        var title = getVal(pri + 'title');
+        var desc = getVal(pri + 'description');
+        var label = getVal(pri + 'label');
+        var skip = getVal(pri + 'skip');
+        var marker = getVal(pri + 'marker');
+        var p = new Place(getLatLngFromString(latlngtext), title, desc, label);
+        if (marker == undefined) {
+            places.push(p);
+        }
+        if (skip == undefined) {
+            route.push(p);
+        }
     }
-    if (skip == undefined) {
-        route.push(p);
-    }
-}
-var opt = {};
-opt.travelmode = getVal('travelmode');
-opt.mapTypeId = getVal('mapTypeId');
-opt.zoom = getIntVal('zoom');
-return new Course(places, route, opt);
+    var opt = {};
+    opt.travelmode = getVal('travelmode');
+    opt.mapTypeId = getVal('mapTypeId');
+    opt.zoom = getIntVal('zoom');
+    return new Course(places, route, opt);
 }
 
 var MAP_ELEMENT = "map";
