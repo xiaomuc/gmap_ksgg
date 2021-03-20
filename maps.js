@@ -142,7 +142,7 @@ function initMap() {
     if (element == null) return;
 
     //エレメントのタイトル属性からコースを特定
-    var course = getCourseFromPage2(0, 4);
+    var course = getCourceFromPage2(0, 4);
     if (course == null) return;
     var cource2 = getCourceFromPage2(4, 9);
 
