@@ -319,4 +319,5 @@ function initMap() {
             setDirection(map, course, i, bounds);
         }
     }
+    map.fitBounds(bounds);
 }
