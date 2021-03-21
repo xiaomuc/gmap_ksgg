@@ -11,11 +11,11 @@ var Place = function (location, title, description, label) {
 }
 
 //コースクラス
-var Course = function (places, route, courseOption) {
+var Course = function (places, routes, courseOption) {
     // マーカを配置する場所
     this.places = places;
     // ルート表示に使用する地点
-    this.route = route;
+    this.routes = routes;
     // ズームサイズ(既定:15)
     this.zoom = (courseOption === undefined || courseOption.zoom === undefined) ? 15 : courseOption.zoom;
     // ルート検索モード(既定:徒歩)
@@ -43,8 +43,8 @@ function setMarker(map, place, infowindow) {
 }
 
 // ルート作成処理　　　　　　　　　
-function setDirection(map, course) {
-    places = course.route;
+function setDirection(map, course, index, bounds) {
+    places = course.routes[index];
 
     //ルート用のレイヤ
     var directionsDisplay = new google.maps.DirectionsRenderer({
@@ -74,6 +74,8 @@ function setDirection(map, course) {
         if (status == 'OK') {
             // Display the route on the map.
             directionsDisplay.setDirections(response);
+            bounds.union(response.routes[0].bounds);
+            map.fitBounds(bounds);
         }
     });
 }
@@ -103,14 +105,11 @@ function getIntVal(id) {
 function getCourseFromPage() {
     // 登録地点数を取得
     var count = getIntVal('count');
-    return getCourceFromPage2(0, count);
-}
-
-function getCourceFromPage2(start, count) {
 
     var places = new Array();
     var route = new Array();
-    for (var i = start; i < count; i++) {
+    var routes = new Array();
+    for (var i = 0; i < count; i++) {
         var pri = 'p' + i + '-';
         var latlngtext = getVal(pri + 'latlng');
         var title = getVal(pri + 'title');
@@ -125,12 +124,17 @@ function getCourceFromPage2(start, count) {
         if (skip == undefined) {
             route.push(p);
         }
+        if(label.includes("-b-")){
+            routes.push(route);
+            route = new Array();
+        }
     }
+    routes.push(route);
     var opt = {};
     opt.travelmode = getVal('travelmode');
     opt.mapTypeId = getVal('mapTypeId');
     opt.zoom = getIntVal('zoom');
-    return new Course(places, route, opt);
+    return new Course(places, routes, opt);
 }
 
 var MAP_ELEMENT = "map";
@@ -142,9 +146,8 @@ function initMap() {
     if (element == null) return;
 
     //エレメントのタイトル属性からコースを特定
-    var course = getCourceFromPage2(0, 4);
+    var course = getCourseFromPage();
     if (course == null) return;
-    var cource2 = getCourceFromPage2(4, 9);
 
     //縮尺、中央を設定、マウスホイールによる拡大縮小を抑止
     var mapOptions = {
@@ -298,6 +301,7 @@ function initMap() {
 
     //マップオブジェクト生成
     var map = new google.maps.Map(element, mapOptions);
+    var bounds = new google.maps.LatLngBounds();
 
     //情報ウィンドウ
     var infowindow = new google.maps.InfoWindow();
@@ -310,8 +314,9 @@ function initMap() {
         setMarker(map, course.places[i], infowindow);
     }
     //ルートの作成
-    if (course.route.length > 0) {
-        setDirection(map, course);
-        setDirection(map, cource2);
+    if (course.routes.length > 0) {
+        for(var i = 0; i< course.routes.length; i++){
+            setDirection(map, course, i, bounds);
+        }
     }
 }
