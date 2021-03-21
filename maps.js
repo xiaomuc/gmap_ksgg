@@ -49,7 +49,8 @@ function setDirection(map, course, index, bounds) {
     //ルート用のレイヤ
     var directionsDisplay = new google.maps.DirectionsRenderer({
         map: map,
-        suppressMarkers: true
+        suppressMarkers: true,
+        preserveViewport: true
     });
 
     //経由ポイント生成
@@ -124,6 +125,8 @@ function getCourseFromPage() {
         if (skip == undefined) {
             route.push(p);
         }
+        // 2021/03/21 ルートのラベルに'-b-'を含む場合、ルートを分割するようにしてみた
+        // Routeテーブル上はmarker=0,skip=1としておけば無視される地点になる
         if(label.includes("-b-")){
             routes.push(route);
             route = new Array();
@@ -319,5 +322,4 @@ function initMap() {
             setDirection(map, course, i, bounds);
         }
     }
-    map.fitBounds(bounds);
 }
