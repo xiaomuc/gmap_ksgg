@@ -1,3 +1,3 @@
-# gmap_ksgg
-Test for KSGG maps
-https://xiaomuc.github.io/gmap_ksgg/
+# Google maps apiを使ってHTMLにルートを埋め込む
+* APIキーは別途取得し、各HTMLのYOUR_API_KEYの部分に記述することで動作する
+
