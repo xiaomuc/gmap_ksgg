@@ -77,3 +77,16 @@ Set the type of the map.
 | SATELLITE | The satellite photo map. |
 | HYBRID | Mixed with ROADMAP and SATELLITE |
 | TERRAIN | The map shows terrain. |
+
+## JavaScript(maps.js)
+### classes
+#### Place class
+Read place information from HTML form and store these.
+It has attributes such as location, title, and description of the point.
+#### Course class
+This class stores map types, routes, places, etc.
+
+### sub-functions
+#### setMarker
+parameter map and infowindow are used in the initMap function.
+parameter place is instance of Place class.
