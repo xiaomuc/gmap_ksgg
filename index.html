@@ -2,69 +2,43 @@
 <html>
 
 <head>
-    <title>KSGG MAP Test page</title>
+    <title>Google Maps Directions Test page</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script src="js/maps.js"></script>
 </head>
 
 <body>
     <div>
+        <a href="k5.html">K5 Kamakura</a><br/>
+        <a href="y2.html">Y2 Yokohama</a><br/>
+        <a href="ym_0.html">YM1 Yokosuka Wrong route</a><br/>
+        <a href="ym_0_zoom.html">YM1 Yokosuka Wrong route(3->4 zoom)</a><br/>
+        <a href="ym_1.html">YM1 Yokosuka route devided</a><br/>
         <form id="">
-            <input type="hidden" id="count" value="10" />
+            <input type="hidden" id="count" value="4" />
             <input type="hidden" id="p0-label" value="Start" />
-            <input type="hidden" id="p0-title" value="JR Yokosuka Station" />
-            <input type="hidden" id="p0-latlng" value="35.284269, 139.655905" />
-            <input type="hidden" id="p0-description" value="" />
+            <input type="hidden" id="p0-title" value="Kamakura Station" />
+            <input type="hidden" id="p0-latlng" value="35.319264, 139.550004" />
+            <input type="hidden" id="p0-description" value="Tour starts from here" /> 
             <input type="hidden" id="p1-label" value="1" />
-            <input type="hidden" id="p1-title" value="Verny Museum" />
-            <input type="hidden" id="p1-latlng" value="35.284467, 139.656041" />
-            <input type="hidden" id="p1-description" value="" />
+            <input type="hidden" id="p1-title" value="Tsurugaoka Hachimangu Shrine" />
+            <input type="hidden" id="p1-latlng" value="35.326074, 139.556485" />
+            <input type="hidden" id="p1-description"
+                value="Built as a tutelary shrine for the Genji family in 1191, the most gorgeous shrine in Kamakura attracts millions of visitors for its history, culture, architecture and various traditional events." />
             <input type="hidden" id="p2-label" value="2" />
-            <input type="hidden" id="p2-title" value="Verny Park" />
-            <input type="hidden" id="p2-latlng" value="35.28358, 139.65853" />
-            <input type="hidden" id="p2-description" value="" />
+            <input type="hidden" id="p2-title" value="Hase-dera Temple" />
+            <input type="hidden" id="p2-latlng" value="35.312416, 139.533042" />
+            <input type="hidden" id="p2-description"
+                value="This legendary old temple boasts of its large wooden gilded statue of Eleven-faced Goddess of Mercy, a beautiful Japanese-style garden and the nice view of the ocean from a terrace." />
             <input type="hidden" id="p3-label" value="3" />
-            <input type="hidden" id="p3-title" value="Naval Base Cruise" />
-            <input type="hidden" id="p3-latlng" value="35.283238, 139.661396" />
-            <input type="hidden" id="p3-description" value="" />
-            <input type="hidden" id="p4-label" value="-b-" />
-            <input type="hidden" id="p4-title" value="way_0" />
-            <input type="hidden" id="p4-latlng" value="35.282227964165884, 139.66098794068648" />
-            <input type="hidden" id="p4-description" value="way_0" />
-            <input type="hidden" id="p4-marker" value="0" />
-            <input type="hidden" id="p4-skip" value="1" />
-
-            <input type="hidden" id="p5-label" value="" />
-            <input type="hidden" id="p5-title" value="way_0" />
-            <input type="hidden" id="p5-latlng" value="35.282193103430686, 139.66212796913587" />
-            <input type="hidden" id="p5-description" value="way_0" />
-            <input type="hidden" id="p5-marker" value="0" />
-
-            <input type="hidden" id="p6-label" value="4" />
-            <input type="hidden" id="p6-title" value="Dobuita Street" />
-            <input type="hidden" id="p6-latlng" value="35.2819, 139.66412" />
-            <input type="hidden" id="p6-description" value="Dobuita Street" />
-
-            <input type="hidden" id="p7-label" value="" />
-            <input type="hidden" id="p7-title" value="Dobuita Street 2" />
-            <input type="hidden" id="p7-latlng" value="35.28198257664947, 139.66588163506304" />
-            <input type="hidden" id="p7-description" value="Dobuita Street" />
-            <input type="hidden" id="p7-marker" value="0" />
-
-            <input type="hidden" id="p8-label" value="" />
-            <input type="hidden" id="p8-title" value="ym1_way_2" />
-            <input type="hidden" id="p8-latlng" value="35.28358968223436, 139.669057370557" />
-            <input type="hidden" id="p8-description" value="Dobuita Street - Mikasa" />
-            <input type="hidden" id="p8-marker" value="0" />
-
-            <input type="hidden" id="p9-label" value="5" />
-            <input type="hidden" id="p9-title" value="Memorial Ship Mikasa" />
-            <input type="hidden" id="p9-latlng" value="35.28543, 139.674359" />
-            <input type="hidden" id="p9-description" value="" />
+            <input type="hidden" id="p3-title" value="the Great Buddha" />
+            <input type="hidden" id="p3-latlng" value="35.315858, 139.535371" />
+            <input type="hidden" id="p3-description"
+                value="The Great Buddha, a National Treasure and a Symbol of Kamakura, was cast in bronze in the middle of the 13th C. The hollow interior of the statue is open to the public." />
         </form>
     </div>
     <div>
-        <p>map</p>
+        <p>Google maps directions k1</p>
     </div>
     <div id="map"></div>
     <script
