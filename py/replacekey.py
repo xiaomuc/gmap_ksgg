@@ -12,11 +12,11 @@ API_KEY_HIDE = "YOUR_API_KEY"
 
 this_file = sys.argv[0]
 
-parser = argparse.ArgumentParser(description="htmlのAPIキーを設定・削除する")
-parser.add_argument('-m','--mode',help="動作モード：APIキーを設定(set)するか隠蔽(hide)するか",choices=['set','hide'],default='set')
-parser.add_argument('-k','--key',help="APIキー名を指定。デフォルトはmine",default=API_KEY_MINE)
-parser.add_argument('-p','--path',help="置き換え対象パス。デフォルトは./*.html",default='./*.html')
-parser.add_argument('-j','--json',help='APIキーを格納したJSONファイル。デフォルトはkeys.json')
+parser = argparse.ArgumentParser(description="your true API key change/unchange to YOUR_API_KEY")
+parser.add_argument('-m','--mode',help="set = change YOUR_API_KEY to true key, hide = change true key to YOUR_API_KEY",choices=['set','hide'],default='set')
+parser.add_argument('-k','--key',help="set the name in keys.json. default = mine",default=API_KEY_MINE)
+parser.add_argument('-p','--path',help="set the path of your file.defaut = ./*.html",default='./*.html')
+parser.add_argument('-j','--json',help='set the path of settign file. default = keys.json')
 
 args = parser.parse_args()
 if args.json == None:
