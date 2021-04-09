@@ -88,5 +88,53 @@ This class stores map types, routes, places, etc.
 
 ### sub-functions
 #### setMarker
+
 parameter map and infowindow are used in the initMap function.
 parameter place is instance of Place class.
+
+#### setDirections
+
+Create routes using Directions API.
+Object "course" is an instance of the Course class above,  map and bounds are created in intiMap function. The index is for the course.routes array, mostly zero.
+The routes array is a list of waypoints. The first one is the origin the last one is the destination.
+The bounds.union is used in fitBounds function to set the zoom of the map.
+
+#### getCourseFromPage
+From HTML form, get route information and create a course object.
+"count" is the number of waypoints, it is set as a loop counter.
+Read from input tag:
+* create Place object
+* if "marker" is not defined, it means you need a marker on the map, so add to the place list.
+* if "skip" is not defined, it means you want to include this point to the route, so add to the route list.
+* if the label is "-b-", add the route to the routes list and create a new route object. it divides the route.
+
+#### getLatLngFromString
+This function creates a LatLng object from a string.
+
+#### getVal
+This function gets value from the input tag identified by id.
+
+#### getIntVal
+This function gets an integer value from the input tag identified by id.
+
+### intiMap
+Google maps call back this function.
+Get div tag in HTML by id for mount the map.
+Get course information.
+The mapOptions are for map color settings. Without this, all functions work well.
+
+https://developers.google.com/maps/documentation/javascript/examples/maptype-styled-simple#maps_maptype_styled_simple-javascript/
+
+The routes array is in for-loop in case of the route divided.
+
+## Divide the route
+We made a new course map on our website. But the route was weird.
+A facility on the map, you can go through it but google maps didn't show the way go through. The route goes far away around to.
+I tried to find some waypoint to show a good route, but I couldn't find any. So I decided to divide the route into two different routes.
+I changed:
+In Course class route change to routes array.
+If pn-label has the value "-b-", divide the route.
+If you define pn-marker and pn-skip at the same time, you can set a point with no marker and not include it in the route.
+So it works better.
+
+https://volunteerguide-ksgg.jp/tours/ym-1/
