@@ -144,7 +144,7 @@ When you upload your programs to github, maybe you wouldn't like to put your API
 
 ## keys.json
 First you have to create keys.json in the same directory of replacekey.py. This is not on my github but you need to create yours when you use replacekey.py.
-The key "mine" is required.
+The key "mine" is required. And of course, YOUR_API_KEY should set as your own API key that you got from Goole site.
 
 ```
 {
