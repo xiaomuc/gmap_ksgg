@@ -138,3 +138,47 @@ If you define pn-marker and pn-skip at the same time, you can set a point with n
 So it works better.
 
 https://volunteerguide-ksgg.jp/tours/ym-1/
+
+# python code for hiding API keys: ./py/replacekey.py
+When you upload your programs to github, maybe you wouldn't like to put your API key on it. ./py/replacekey.py can set/unset your API keys to your programs like *.html.
+
+## keys.json
+First you have to create keys.json in the same directory of replacekey.py. This is not on my github but you need to create yours when you use replacekey.py.
+The key "mine" is required.
+
+```
+{
+    "mine":"YOUR_API_KEY",
+    "other":"OTHER_API_KEY"
+}
+```
+
+## usage
+
+### change YOUR_API_KEY to your own API key.
+
+```
+python ./py/replacekey.py
+```
+
+It will search your html files in executed directory and replace "YOUR_API_KEY" to your own.
+
+### Change your own key to YOUR_API_KEY.
+
+```
+python ./py/replacekey.py --mode hide
+```
+
+### Other switches
+
+The first command line is same as:
+
+```
+python ./py/replacekey.py --mode set --path ./*.html --key mine --json keys.json
+```
+
+### help
+
+```
+python ./py/replacekey.py --help
+```
